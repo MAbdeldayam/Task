@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>Task Manager</title> 
+  <link rel="stylesheet" href="style.css"> 
+ <style type="text/css" id="dcoder_stylesheet">* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  background-color: #B0E0E6;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+header {
+    background-color: blue;
+    color: #fff;
+    padding: 20px;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-weight: normal;
+}
+
+h2{
+  color: gold;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+form input[type="text"], form input[type="date"] {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+button[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+ul li {
+    list-style: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.an{
+  background-color: White;
+  color: #5b3ec4;
+}
+.bb{
+  background-color: #4CAF50 ;
+  color: white;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}</style></head> 
+ <body> 
+  <header> 
+   <h1>Task Manager</h1> 
+   <h2>Eng:Mohamed Abdeldayam</h2> 
+  </header> 
+  <main> 
+   <section> 
+    <h3>Add Task</h3> 
+    <form> <label for="taskName">Task Name:</label> 
+     <input type="text" id="taskName" name="taskName" required> <label for="taskDescription">Task Description:</label> 
+     <input type="text" id="taskDescription" name="taskDescription"> <label for="dueDate">Due Date:</label> 
+     <input type="date" id="dueDate" name="dueDate"> <button type="submit">Add Task</button> 
+    </form> 
+   </section> 
+   <section class="an"> 
+    <h1 class=" bb">Task List</h1> 
+    <hr> 
+    <ul id="taskList"></ul> 
+   </section> 
+  </main> 
+  <footer> 
+   <p>© 2023 Task Manager</p> 
+  </footer> 
+  <script src="app.js"></script> 
+ 
+<script type="text/javascript" id="dcoder_script">const form = document.querySelector('form');
+const taskNameInput = document.getElementById('taskName');
+const taskDescriptionInput = document.getElementById('taskDescription');
+const dueDateInput = document.getElementById('dueDate');
+const taskList = document.getElementById('taskList');
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const taskName = taskNameInput.value.trim();
+    const taskDescription = taskDescriptionInput.value.trim();
+    const dueDate = dueDateInput.value;
+
+    if (!taskName) return;
+
+    const task = document.createElement('li');
+    task.innerHTML = `
+        <h3>${taskName}</h3>
+        <p>${taskDescription}</p>
+        <small>Due Date: ${dueDate}</small>
+    `;
+
+    taskList.appendChild(task);
+
+    taskNameInput.value = '';
+    taskDescriptionInput.value = '';
+    dueDateInput.value = '';
+});</script></body></html>
